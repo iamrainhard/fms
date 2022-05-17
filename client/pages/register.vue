@@ -5,7 +5,7 @@
     <div
       class="flex flex-col w-full bg-white shadow-md border border-gray-200 rounded-lg max-w-md px-4 py-8 sm:px-6 md:px-8 lg:px-10 dark:bg-gray-800 dark:border-gray-700"
     >
-      <form class="space-y-6" action="#">
+      <form @submit.prevent="register" class="space-y-6" action="#">
         <h3 class="text-xl font-medium text-gray-900 dark:text-white">
           Register an account
         </h3>

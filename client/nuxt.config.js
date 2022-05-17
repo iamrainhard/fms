@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'client',
+    title: 'FMS',
     htmlAttrs: {
       lang: 'en'
     },
@@ -64,8 +64,15 @@ export default {
           user: {
             url: 'api/user'
           }
+        },
+        user: {
+          property: false
         }
-      },
+      }
+    },
+    redirect: {
+      login: '/login',
+      home: '/dashboard',
     }
   },
 
