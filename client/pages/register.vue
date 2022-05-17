@@ -1,5 +1,7 @@
 <template>
-  <div class="flex flex-col justify-center items-center min-h-screen">
+  <div
+    class="flex flex-col justify-center items-center min-h-screen bg-gray-100"
+  >
     <div
       class="flex flex-col w-full bg-white shadow-md border border-gray-200 rounded-lg max-w-md px-4 py-8 sm:px-6 md:px-8 lg:px-10 dark:bg-gray-800 dark:border-gray-700"
     >
@@ -30,6 +32,7 @@
               required=""
             />
           </div>
+          <span class="text-red-200 italic font-light text-xs">error</span>
         </div>
         <div>
           <label
@@ -54,6 +57,7 @@
               required=""
             />
           </div>
+          <span class="text-red-200 italic font-light text-xs">error</span>
         </div>
         <div>
           <label
@@ -78,6 +82,7 @@
               required=""
             />
           </div>
+          <span class="text-red-200 italic font-light text-xs">error</span>
         </div>
         <div>
           <label
