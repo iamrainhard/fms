@@ -10,16 +10,16 @@
       </nuxt-link>
       <div class="flex md:order-2">
         <nuxt-link
-          to=""
+          to="/login"
           class="border text-blue-700 border-blue-700 hover:border-2 hover:shadow-md focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Login
         </nuxt-link>
         <nuxt-link
-          to=""
+          to="/register"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Get started
+          Register
         </nuxt-link>
         <button
           data-collapse-toggle="mobile-menu-4"
@@ -63,18 +63,18 @@
           class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
         >
           <li>
-            <a
-              href="#"
+            <nuxt-link
+              to="/"
               class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
               aria-current="page"
-              >Home</a
+              >Home</nuxt-link
             >
           </li>
           <li>
-            <a
-              href="#"
+            <nuxt-link
+              to="/dashboard"
               class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >About</a
+              >Dashboard</nuxt-link
             >
           </li>
           <!-- <li>
