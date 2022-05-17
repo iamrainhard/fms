@@ -5,10 +5,15 @@
     <div
       class="flex flex-col w-full bg-white shadow-md border border-gray-200 rounded-lg max-w-md px-4 py-8 sm:px-6 md:px-8 lg:px-10 dark:bg-gray-800 dark:border-gray-700"
     >
-      <form class="space-y-6" action="#">
+      <form @submit.prevent="login" class="space-y-6" action="#">
         <h3 class="text-xl font-medium text-gray-900 dark:text-white">
           Sign in to our platform
         </h3>
+        <div class="flex flex-col mt-3" v-if="errors">
+          <span class="text-red-200 italic font-light text-xs">{{
+            errors
+          }}</span>
+        </div>
         <div>
           <label
             for="email"
@@ -24,6 +29,7 @@
               </i>
             </div>
             <input
+              v-model="form.email"
               type="email"
               name="email"
               id="email"
@@ -32,7 +38,6 @@
               required=""
             />
           </div>
-          <span class="text-red-200 italic font-light text-xs">error</span>
         </div>
         <div>
           <label
@@ -49,6 +54,7 @@
               </i>
             </div>
             <input
+              v-model="form.password"
               type="password"
               name="password"
               id="password"
@@ -57,7 +63,6 @@
               required=""
             />
           </div>
-          <span class="text-red-200 italic font-light text-xs">error</span>
         </div>
         <div class="flex items-start">
           <div class="flex items-start">
@@ -67,7 +72,6 @@
                 aria-describedby="remember"
                 type="checkbox"
                 class="bg-gray-50 border border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                required=""
               />
             </div>
             <div class="text-sm ml-3">
@@ -103,3 +107,26 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    form: {
+      email: "",
+      password: "",
+    },
+    errors: "",
+  }),
+  methods: {
+    async login() {
+      try {
+        await this.$auth.loginWith("laravelSanctum", { data: this.form });
+      } catch (err) {
+        if ((err.response.status = 422)) {
+          this.errors = "Could not sign you in with those credentials.";
+        }
+      }
+    },
+  },
+};
+</script>

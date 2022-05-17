@@ -24,6 +24,7 @@
               </i>
             </div>
             <input
+              v-model="form.name"
               type="text"
               name="name"
               id="name"
@@ -32,7 +33,9 @@
               required=""
             />
           </div>
-          <span class="text-red-200 italic font-light text-xs">error</span>
+          <span class="text-red-500 italic font-light text-xs" v-if="errors">{{
+            errors.name
+          }}</span>
         </div>
         <div>
           <label
@@ -49,6 +52,7 @@
               </i>
             </div>
             <input
+              v-model="form.email"
               type="email"
               name="email"
               id="email"
@@ -57,7 +61,9 @@
               required=""
             />
           </div>
-          <span class="text-red-200 italic font-light text-xs">error</span>
+          <span class="text-red-500 italic font-light text-xs" v-if="errors">{{
+            errors.email
+          }}</span>
         </div>
         <div>
           <label
@@ -74,6 +80,7 @@
               </i>
             </div>
             <input
+              v-model="form.password"
               type="password"
               name="password"
               id="password"
@@ -82,7 +89,9 @@
               required=""
             />
           </div>
-          <span class="text-red-200 italic font-light text-xs">error</span>
+          <span class="text-red-500 italic font-light text-xs" v-if="errors">{{
+            errors.password
+          }}</span>
         </div>
         <div>
           <label
@@ -99,6 +108,7 @@
               </i>
             </div>
             <input
+              v-model="form.password_confirmation"
               type="password"
               name="password_confirmation"
               id="confirm_password"
@@ -127,3 +137,35 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    form: {
+      name: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+    },
+    errors: null,
+  }),
+  methods: {
+    async register() {
+      try {
+        let errors = null;
+        await this.$axios.$get("sanctum/csrf-cookie");
+        await this.$axios
+          .$post("/register", this.form)
+          .then((resp) => {})
+          .catch((err) => {
+            if ((err.response.status = 422)) {
+              errors = err.response.data.errors;
+            }
+          });
+        this.errors = errors;
+        await this.$auth.loginWith("laravelSanctum", { data: this.form });
+      } catch (error) {}
+    },
+  },
+};
+</script>
