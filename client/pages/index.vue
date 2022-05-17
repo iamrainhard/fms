@@ -1,11 +1,13 @@
 <template>
-  <nuxt-logo/>
+  <div>
+    <p>Welcome to the App!</p>
+  </div>
 </template>
 
 <script>
-import NuxtLogo from '../components/NuxtLogo.vue'
+import NuxtLogo from "../components/NuxtLogo.vue";
 export default {
   components: { NuxtLogo },
-  name: 'IndexPage'
-}
+  name: "IndexPage",
+};
 </script>
